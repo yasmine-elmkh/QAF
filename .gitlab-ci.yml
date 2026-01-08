@@ -1,0 +1,33 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  KUBE_NAMESPACE: default
+
+before_script:
+  - docker info
+  - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/frontend ./frontend
+    - docker build -t $CI_REGISTRY_IMAGE/backend ./backend
+    - docker push $CI_REGISTRY_IMAGE/frontend
+    - docker push $CI_REGISTRY_IMAGE/backend
+
+test:
+  stage: test
+  script:
+    - docker run --rm $CI_REGISTRY_IMAGE/backend pytest
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f k8s/mysql-deployment.yaml
+    - kubectl apply -f k8s/backend-deployment.yaml
+    - kubectl apply -f k8s/frontend-deployment.yaml
+    - kubectl apply -f k8s/ingress.yaml
