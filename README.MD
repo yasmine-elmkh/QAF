@@ -13,12 +13,12 @@ L’objectif principal est de mettre en place une **pipeline DevOps automatisée
 
 
 ## 2. Fonctionnalités principales
--Chatbot intelligent basé sur IA/NLP, capable de comprendre le sens des questions et de répondre aux FAQ.
--Utilisation de NLTK pour le prétraitement du texte : tokenisation, stopwords, lemmatisation.
--Utilisation de Sentence-BERT pour encoder les questions et mesurer la similarité entre la question de l’utilisateur et celles stockées dans la base.
--Interface utilisateur interactive et responsive.
--Déploiement multi-conteneurs sur Kubernetes avec accès via Ingress.
--CI/CD automatisée pour construire, tester et déployer automatiquement chaque modification du code.
+Chatbot intelligent basé sur IA/NLP, capable de comprendre le sens des questions et de répondre aux FAQ.
+Utilisation de NLTK pour le prétraitement du texte : tokenisation, stopwords, lemmatisation.
+Utilisation de Sentence-BERT pour encoder les questions et mesurer la similarité entre la question de l’utilisateur et celles stockées dans la base.
+Interface utilisateur interactive et responsive.
+Déploiement multi-conteneurs sur Kubernetes avec accès via Ingress.
+CI/CD automatisée pour construire, tester et déployer automatiquement chaque modification du code.
 ---
 
 ## 3. Architecture
